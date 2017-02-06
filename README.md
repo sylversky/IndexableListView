@@ -30,7 +30,7 @@ allprojects {
 Add on your app level build.gradle dependencies:
 ```
 dependencies{
-compile 'com.sylversky.library:indexablelistview:1.0'
+compile 'com.sylversky.library:indexablelistview:1.0.1'
 }
 ```
 
