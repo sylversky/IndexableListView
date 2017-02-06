@@ -32,6 +32,7 @@ public class IndexableListView extends ListView {
 
 	private ListViewIndexScroller mScroller = null;
 	private GestureDetector mGestureDetector = null;
+	private boolean invisible;
 
 	public IndexableListView(Context context) {
 		super(context);
@@ -53,6 +54,7 @@ public class IndexableListView extends ListView {
 	}
 
 	public void setInvisibleIndexer(boolean invisibleIndexer) {
+		this.invisible = invisibleIndexer;
 		mScroller.setInvisible(invisibleIndexer);
 	}
 
@@ -130,7 +132,7 @@ public class IndexableListView extends ListView {
 		if (mScroller != null) {
 			mScroller.onSizeChanged(w, h, oldw, oldh);
 
-			if(getChildCount() > 0 && !mScroller.isInvisible()) {
+			if(getChildCount() > 0 && !invisible) {
 				if (h < oldh) {
 					mScroller.setInvisible(true);
 				} else {

@@ -30,6 +30,7 @@ import com.sylversky.indexablelistview.scroller.RecyclerViewIndexScroller;
 public class IndexableRecyclerView extends RecyclerView {
 
     private RecyclerViewIndexScroller mScroller;
+    private boolean invisible;
 
     public IndexableRecyclerView(Context context) {
         super(context);
@@ -52,6 +53,7 @@ public class IndexableRecyclerView extends RecyclerView {
     }
 
     public void setInvisibleIndexer(boolean invisibleIndexer) {
+        this.invisible = invisibleIndexer;
         mScroller.setInvisible(invisibleIndexer);
     }
 
@@ -85,7 +87,7 @@ public class IndexableRecyclerView extends RecyclerView {
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
         mScroller.onSizeChanged(w, h, oldw, oldh);
-        if(getChildCount() > 0 && !mScroller.isInvisible()) {
+        if(getChildCount() > 0 && !invisible) {
             if (h < oldh) {
                 mScroller.setInvisible(true);
             } else {
